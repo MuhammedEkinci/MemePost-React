@@ -1,8 +1,8 @@
   
 import React from "react";
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
-//import { HashRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -18,7 +18,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
       <div>
-        <Router>
+        <Router basename="/">
           <AuthProvider>
             <Navbar />
             <Switch>
