@@ -5,7 +5,7 @@ An Application that allows you to create and post your own creative memes to you
 ## Usage
 
 - ### Live usage:
- -deployed link: [Here](https://warm-plains-99850.herokuapp.com/#/Meme-Post/liked)
+ -deployed link: [Here](https://memepost.herokuapp.com/#/)
 
 - #### Local Usage:
   - Git clone the repository.
