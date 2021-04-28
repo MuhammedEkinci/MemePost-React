@@ -1,0 +1,24 @@
+.meme-img {
+    width: 110px;
+    height: 110px;
+}
+
+.meme-display-container {
+    margin: 0 auto;
+    margin: 20px;
+    max-width: 90%;
+    justify-content: center;
+}
+
+.create-meme-title {
+ text-align: center;
+}
+
+.chosen-meme-display-area{
+    padding-top: 10px;
+}
+
+.meme-img:hover {
+    box-shadow: 0 0 10px 2px red;
+}
+

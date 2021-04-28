@@ -1,0 +1,151 @@
+.meme-post-content {
+    width: 100px;
+    padding: 20px 14px 14px 14px !important;
+    background-color: white;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.meme-card-top {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.meme-card{
+    margin: 0 auto;
+    max-width: 700px;
+    position: relative;
+}
+
+.meme-artist {
+    float: right;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    padding-top: 2px !important;
+}
+
+.meme-artist-name {
+    font-size: 15px;
+}
+
+.meme-picture {
+    display: block;
+    margin: 0;
+}
+
+.save-btn {
+    float: right;
+}
+
+.meme {
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.meme-card-body {
+    padding: 0 !important;
+}
+
+.meme-title {
+    margin: 5px 5px 2px 5px !important;
+    font-size: 3rem !important;
+    padding-bottom: 5px;
+}
+@media (max-width: 463px){
+    .meme-title {
+        font-size: 2rem !important;
+    }
+}
+
+#load-more-btn{
+    margin-bottom: 20px !important;
+
+}
+@media (min-width: 725px){
+    #load-more-btn{
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 1010px){
+    #load-more-btn{
+        margin-left: 150px;
+    }
+}
+
+@media (min-width: 1030px){
+    #load-more-btn{
+        margin-left: 160px;
+    }
+}
+
+@media (min-width: 1207px){
+    #load-more-btn{
+        margin-left: 200px;
+    }
+}
+
+@media (min-width: 1240px){
+    #load-more-btn{
+        margin-left: 260px;
+    }
+}
+
+@media (min-width: 1360px){
+    #load-more-btn{
+        margin-left: 310px;
+    }
+}
+
+@media (min-width: 1360px){
+    #load-more-btn{
+        margin-left: 27%;
+    }
+}
+
+/* Footer CSS */
+.footer-content {
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(20, 20, 37);
+    padding-top: 50px;
+    background-size: cover;
+}
+
+.footer-content .fab{
+    font-size: 2rem;
+    color: white;
+    padding: 3px;
+}
+
+.footer-content .fab:hover{
+   color:rgb(1, 125, 241) !important;
+}
+
+.section-class .hr {
+    height: 1px;
+    width: 640px;
+    display: inline-block;
+    clear: both;
+    background-color: #d8d8d8;
+    opacity: 0.3;
+}
+
+.section-class .copyright {
+    color: white;
+    padding-bottom: 1rem;
+}
+
+#imgflip-line{
+    color: white;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+
+@media (max-width: 520px){
+    dialog{
+        margin-right: 300px !important;
+    }
+}
+

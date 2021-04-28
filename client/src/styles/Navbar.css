@@ -1,0 +1,13 @@
+.meme-navbar {
+    background-color: rgb(5, 5, 218);
+    color: white;
+    font-family: 'Fredoka One', cursive;
+}
+
+li{
+    color: white;
+}
+.override {
+    padding-left: 100px;
+    padding-right: 100px;
+}
