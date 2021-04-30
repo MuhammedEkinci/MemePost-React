@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import {Container, Form, Button} from "react-bootstrap";
 import "../styles/CreateMemePage.css";
 import Meme from "../components/Meme/";
+import MyVerticallyCenteredModal from "../components/MyVerticallyCenteredModal";
+
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
@@ -37,6 +39,11 @@ export default function CreateMemePage() {
     const [topText, setTopText] = useState('');
     const [bottomText, setBottomText] = useState('');
     const [title, setTitle] = useState('');
+    const [modalShow, setModalShow] = useState(false);
+
+    const [previewImg, setPreviewImg]= useState('');
+    const [previewTitle, setPreviewTitle] = useState('');
+
     const history = useHistory();
 
     //to get the current user
@@ -102,14 +109,48 @@ export default function CreateMemePage() {
                     "user": userEmail.user,
                     posted_date: date
                 }
-                console.log(memes);
-            API.createMeme(memes)
+                API.createMeme(memes)
                 .then(history.push("/homepage"))
                 .catch((err) => console.log(err))
             } 
         }
     }
 
+    //function to preview meme before post
+    async function previewMeme() {
+        console.log("pressed");
+
+        const params = {
+            template_id: template.id,
+            text0: topText,
+            text1: bottomText,
+            username: "MemePost",
+            password: "memePost001"
+
+        };
+
+        if(topText === "" || bottomText === "" || title === ""){
+            setOpen(false);
+        } else {
+            const response = await fetch(`https://api.imgflip.com/caption_image${objectToQueryParam(params)}`);
+
+            const data = await response.json()
+
+            const userEmail = {
+                user: currentUser.email.split("@")[0]
+            }
+
+            if(title && data && userEmail){
+                let memes = {
+                    title: title,
+                    meme: data.data.url,
+                    "user": userEmail.user
+                };
+                setPreviewImg(memes.meme);
+                setPreviewTitle(memes.title);
+            }
+        }
+    }
     return (
         <div className="create-meme-container">
             <h1 className="create-meme-title">Create a Meme</h1>
@@ -131,11 +172,18 @@ export default function CreateMemePage() {
                                 <Form.Control  placeholder="bottom-text"  onChange={e => setBottomText(e.target.value)} value={bottomText}/>
                             </Form.Group>
                             <Button className="btn btn-primary" type="submit">Create Meme</Button>
+                            <Button className="btn btn-primary" id="preview-btn" onClick={() => {setModalShow(true); previewMeme()}}>Preview Meme</Button>
+                            <MyVerticallyCenteredModal
+                                show={modalShow}
+                                onHide={() => setModalShow(false)}
+                                memeimg={previewImg}
+                                memetitle={previewTitle}
+                            />
                         </Form>
                   </div>
                 )}
                 {!template && templates.map((template) => {
-                    return (
+                    return (         
                         <img             
                             className="meme-img ml-2 mt-2" 
                             key={template.id} 

@@ -5,9 +5,10 @@
 
 .meme-display-container {
     margin: 0 auto;
-    margin: 20px;
     max-width: 90%;
     justify-content: center;
+    margin-left: 80px;
+    margin-bottom: 20px;
 }
 
 .create-meme-title {
@@ -22,3 +23,70 @@
     box-shadow: 0 0 10px 2px red;
 }
 
+#preview-btn{
+    margin-left: 10px;
+}
+
+.meme-post-content {
+    width: 100px;
+    padding: 20px 14px 14px 14px !important;
+    background-color: white;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.meme-card-top {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.meme-card{
+    margin: 0 auto;
+    max-width: 700px;
+    position: relative;
+}
+
+.meme-artist {
+    float: right;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    padding-top: 2px !important;
+}
+
+.meme-artist-name {
+    font-size: 15px;
+}
+
+.meme-picture {
+    display: block;
+    margin: 0;
+}
+
+.save-btn {
+    float: right;
+}
+
+.meme {
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.meme-card-body {
+    padding: 0 !important;
+}
+
+.meme-title {
+    margin: 5px 5px 2px 5px !important;
+    font-size: 3rem !important;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 570px){
+    .preview-modal{
+        max-width: 320px;
+        padding-bottom: 400px;
+    }
+    .dialog{
+        padding-right: 250px !important;
+    }
+}
