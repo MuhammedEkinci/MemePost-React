@@ -24,7 +24,7 @@ export function NavBar() {
                 </li>
             </ul>
             <ul className="navbar-nav justify-content-center mr-auto">
-                <NavLink className="navbar-brand" to="/homepage">Meme-Post</NavLink>
+                <NavLink className="navbar-brand" to="/homepage">Meme-City</NavLink>
                 <img src={Trollface} alt="troll-face" className="d-inline-block" style={{width: "50px"}}></img>
 
             </ul>
