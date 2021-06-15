@@ -8,6 +8,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 
 import "../styles/Homepage.css";
+import FollowButton from "../components/FollowButton";
 
 // functions for material-ui
 const useStyles = makeStyles((theme) => ({
@@ -98,7 +99,7 @@ export default function HomePage() {
   
         // This line of code will change the state depending on the index of the useState 
         // Then it will slice the rest of the array 
-        //and set the copy of that slicwed array into the setIsMemeSaved
+        //and set the copy of that sliced array into the setIsMemeSaved
         setIsMemeSaved(current => [...current.slice(0, saving_meme_index), true, ...current.slice(saving_meme_index+1)]);
         API.changeSavedState( currentUser.email.split("@")[0], memeId)
         .catch((err) => console.log(err));
@@ -107,6 +108,10 @@ export default function HomePage() {
     const handleClose = (event, reason) => {
         setOpen(false);
     };
+
+    function followMemer(name){
+        console.log(name);
+    }
 
     return (
         <>
@@ -123,6 +128,7 @@ export default function HomePage() {
                                     </Card.Body>
                                     <Row>
                                         <Col size={12}>
+                                            <FollowButton currentMemeArtist={memeToShow.user}/>
                                             <h4 className="meme-artist">Made By: <span className="meme-artist-name">{memeToShow.user}</span></h4>
                                         </Col>
                                     </Row>

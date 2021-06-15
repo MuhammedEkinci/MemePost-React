@@ -23,7 +23,16 @@
     margin-right: 10px;
     padding-top: 2px !important;
 }
-
+#star-memer-btn{
+    float: right;
+    margin-right: 5px;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    color: rgb(247, 211, 12);
+    background-color: white;
+    border-color: white;
+}
 .meme-artist-name {
     font-size: 15px;
 }
