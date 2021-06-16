@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const CreatedMeme = require("./models/CreatedMeme.js");
 const SavedMeme = require("./models/SavedMeme.js");
 const Comments = require("./models/Comments.js");
+const FriendsList = require("./models/FriendsList.js");
 
 const app = express();
 
@@ -207,5 +208,51 @@ app.delete("/api/savedMeme/:currentUser/:memeId", (req, res) => {
         console.log(data)
         return res.json(data);
       }
+    });
+});
+
+// follow users route that adds user to followers and following database
+app.put("/api/follow", (req, res) => {
+  FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
+    {
+      $push: {followers: req.body.user}
+    },
+    {
+      new: true
+    }, (err, result) => {
+      if(error){
+        return res.status(422).json({error:err})
+      }
+      FriendsList.findOneAndUpdate({user:req.body.user}, 
+        {
+          $push:{following: req.body.followingUsername}
+        }, {new:true}).then(result => {
+          return res.json(result)
+        }).catch(err=> {
+          return res.status(422).json({error: err});
+        });
+    });
+});
+
+// unfollow users route that removes users from database
+app.put("/api/follow", (req, res) => {
+  FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
+    {
+      $push: {followers: req.body.user}
+    },
+    {
+      new: true
+    }, (err, result) => {
+      if(error){
+        return res.status(422).json({error:err})
+      }
+      FriendsList.findOneAndUpdate({user:req.body.user}, 
+        {
+          $push:{following: req.body.followingUsername}
+        }, {new:true}).then(result => {
+          return res.json(result)
+        }).catch(err=> {
+          return res.status(422).json({error: err});
+        });
     });
 });
