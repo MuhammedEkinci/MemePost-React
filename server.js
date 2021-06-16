@@ -256,3 +256,25 @@ app.put("/api/follow", (req, res) => {
         });
     });
 });
+
+app.delete("/api/unfollow", (req, res) => {
+  FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
+    {
+      $pull: {followers: req.body.user}
+    },
+    {
+      new: true
+    }, (err, result) => {
+      if(error){
+        return res.status(422).json({error:err})
+      }
+      FriendsList.findOneAndUpdate({user:req.body.user}, 
+        {
+          $pull:{following: req.body.followingUsername}
+        }, {new:true}).then(result => {
+          return res.json(result)
+        }).catch(err=> {
+          return res.status(422).json({error: err});
+        });
+    });
+});
