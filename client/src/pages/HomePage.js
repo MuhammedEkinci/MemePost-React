@@ -51,7 +51,6 @@ export default function HomePage() {
         return date;
     };
 
-
     const getMemesToPost = () => {
 
         API.getMemes()

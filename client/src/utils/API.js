@@ -59,5 +59,12 @@ export default {
     },
     getComments: function(memeId){
         return axios.get("/api/get_comment/" + memeId);
+    },
+    followMemer: function(followData){
+        return axios({
+            method: "put",
+            url: "/api/follow",
+            data: followData
+        });
     }
 };
