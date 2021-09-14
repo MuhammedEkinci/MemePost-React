@@ -6,6 +6,7 @@ import CommentButton from "../components/CommentButton";
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
+import {NavLink} from "react-router-dom";
 
 import "../styles/Homepage.css";
 import FollowButton from "../components/FollowButton";
@@ -128,7 +129,7 @@ export default function HomePage() {
                                     <Row>
                                         <Col size={12}>
                                             <FollowButton currentMemeArtist={memeToShow.user}/>
-                                            <h4 className="meme-artist">Made By: <span className="meme-artist-name">{memeToShow.user}</span></h4>
+                                            <h4 className="meme-artist">Made By: <NavLink className="meme-artist-name" to={memeToShow.user !== currentUser.email.split("@")[0]? "/profile/" + memeToShow.user : "/profile"}>{memeToShow.user}</NavLink></h4>
                                         </Col>
                                     </Row>
                                     <Row>
