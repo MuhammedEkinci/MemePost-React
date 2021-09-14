@@ -212,69 +212,75 @@ app.delete("/api/savedMeme/:currentUser/:memeId", (req, res) => {
 });
 
 // follow users route that adds user to followers and following database
-app.put("/api/follow", (req, res) => {
-  FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
-    {
-      $push: {followers: req.body.user}
-    },
-    {
-      new: true
-    }, (err, result) => {
-      if(error){
-        return res.status(422).json({error:err})
-      }
-      FriendsList.findOneAndUpdate({user:req.body.user}, 
-        {
-          $push:{following: req.body.followingUsername}
-        }, {new:true}).then(result => {
-          return res.json(result)
-        }).catch(err=> {
-          return res.status(422).json({error: err});
-        });
-    });
+app.post("/api/follow", (req, res) => {
+  //update followers array 
+  FriendsList.findOneAndUpdate(
+    {user: req.body.followingUsername}, 
+    {$push: {followers: req.body.user}
+  }).then(user => {
+    if(!user){
+      const newUserToFollow = new FriendsList({
+        user: req.body.followingUsername,
+        following: [
+          {
+            followingUsername: req.body.followingUsername,
+
+          }
+        ],
+        followers: [
+          {
+            followerUsername: req.body.followingUsername
+          }
+        ]
+      });
+      newUserToFollow.save()
+      .then(x =>res.json(x))
+      .catch(err => console.log(err));
+    }
+  })
 });
 
 // unfollow users route that removes users from database
-app.put("/api/follow", (req, res) => {
-  FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
-    {
-      $push: {followers: req.body.user}
-    },
-    {
-      new: true
-    }, (err, result) => {
-      if(error){
-        return res.status(422).json({error:err})
-      }
-      FriendsList.findOneAndUpdate({user:req.body.user}, 
-        {
-          $push:{following: req.body.followingUsername}
-        }, {new:true}).then(result => {
-          return res.json(result)
-        }).catch(err=> {
-          return res.status(422).json({error: err});
-        });
-    });
-});
+// app.put("/api/follow", (req, res) => {
+//   FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
+//     {
+//       $push: {followers: req.body.user}
+//     },
+//     {
+//       new: true
+//     }, (err, result) => {
+//       if(error){
+//         return res.status(422).json({error:err})
+//       }
+//       FriendsList.findOneAndUpdate({user:req.body.user}, 
+//         {
+//           $push:{following: req.body.followingUsername}
+//         }, {new:true}).then(result => {
+//           return res.json(result)
+//         }).catch(err=> {
+//           return res.status(422).json({error: err});
+//         });
+//     });
+// });
 
-app.delete("/api/unfollow", (req, res) => {
-  FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
-    {
-      $pull: {followers: req.body.user}
-    },
-    {
-      new: true
-    }, (err, result) => {
-      if(error){
-        return res.status(422).json({error:err})
-      }
-      FriendsList.findOneAndUpdate({user:req.body.user}, 
-        {
-          $pull:{following: req.body.followingUsername}
-        }, {new:true}).then(result => {
-          return res.json(result)
-        }).catch(err=> {
-          return res.status(422).json({error: err});
-        });
-    });
-});
+// app.delete("/api/unfollow", (req, res) => {
+//   FriendsList.findOneAndUpdate({user: req.body.followingUsername}, 
+//     {
+//       $pull: {followers: req.body.user}
+//     },
+//     {
+//       new: true
+//     }, (err, result) => {
+//       if(error){
+//         return res.status(422).json({error:err})
+//       }
+//       FriendsList.findOneAndUpdate({user:req.body.user}, 
+//         {
+//           $pull:{following: req.body.followingUsername}
+//         }, {new:true}).then(result => {
+//           return res.json(result)
+//         }).catch(err=> {
+//           return res.status(422).json({error: err});
+//         });
+//     });
+// });

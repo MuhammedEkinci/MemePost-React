@@ -3,17 +3,20 @@ import React from "react";
 import Navbar from './components/Navbar';
 // import { BrowserRouter as Router, Route, Switch} from "react-router-dom"
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import Profile from "./pages/Profile";
-import ForgotPassword from "./pages/ForgotPassword";
-import UpdateProfile from "./pages/UpdateProfile";
 import { AuthProvider } from "./contexts/AuthContext";
 import PrivateRoute from "./components/PrivateRoute";
+import Footer from "./components/Footer";
+
+//pages 
 import HomePage from "./pages/HomePage";
 import CreateMemePage from "./pages/CreateMemePage";
 import SavedMemePage from "./pages/SavedMemePage";
-import Footer from "./components/Footer";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdateProfile from "./pages/UpdateProfile";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -32,6 +35,7 @@ function App() {
               <PrivateRoute exact path ="/create" component={CreateMemePage} />
               <PrivateRoute exact path="/saved" component={SavedMemePage} />
               <PrivateRoute exact path ="/profile" component={Profile} />
+              <PrivateRoute exact path = "/profile/:userid" component={UserProfile} />
             </Switch>
             <Footer />
           </AuthProvider>
