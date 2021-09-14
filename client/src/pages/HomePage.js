@@ -109,10 +109,6 @@ export default function HomePage() {
         setOpen(false);
     };
 
-    function followMemer(name){
-        console.log(name);
-    }
-
     return (
         <>
         <Container fluid className="meme justify-content-center">
@@ -128,8 +124,16 @@ export default function HomePage() {
                                     </Card.Body>
                                     <Row>
                                         <Col size={12}>
-                                            <FollowButton currentMemeArtist={memeToShow.user}/>
-                                            <h4 className="meme-artist">Made By: <NavLink className="meme-artist-name" to={memeToShow.user !== currentUser.email.split("@")[0]? "/profile/" + memeToShow.user : "/profile"}>{memeToShow.user}</NavLink></h4>
+                                            {/* <FollowButton currentMemeArtist={memeToShow.user}/> */}
+                                            <h4 className="meme-artist">Made By: 
+                                                <NavLink className="meme-artist-name" 
+                                                    to={memeToShow.user !== currentUser.email.split("@")[0]
+                                                    ? "/profile/" + memeToShow.user 
+                                                    : "/profile"
+                                                }>
+                                                    {memeToShow.user}
+                                                </NavLink>
+                                            </h4>
                                         </Col>
                                     </Row>
                                     <Row>

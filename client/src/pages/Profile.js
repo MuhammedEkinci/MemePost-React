@@ -76,11 +76,11 @@ export default function Profile() {
                         <div className="card mb-3" id="profile-card">
                             <div className="card-body text-center">
                                 <img 
-                                src={ProfileImage}
-                                alt="profile-image" 
-                                class="img-fluid rounded-circle mb-2" 
-                                width="128"
-                                height="128"
+                                    src={ProfileImage}
+                                    alt="profile-image" 
+                                    class="img-fluid rounded-circle mb-2" 
+                                    width="128"
+                                    height="128"
                                 />
                                 <h2 class="card-title mb-0">{currentUser.email.split("@")[0]}</h2>
                                 <h5 className="mb-2"><strong>Email: </strong>{currentUser.email}</h5>
@@ -88,6 +88,18 @@ export default function Profile() {
                                     <NavLink to="/update-profile" className="btn btn-primary btn-sm">Update Profile</NavLink>
                                     <Link className="btn btn-primary btn-sm logout-btn" onClick={handleLogout} style={{marginLeft: "10px"}}>Log Out</Link>
                                 </div> 
+                            </div>
+                        </div>
+                        <div className="card mb-3" id="profile-card">
+                            <div className="card-body">
+                                <h2 class="card-title mb-0">Following: 50</h2>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div className="card mb-3" id="profile-card">
+                            <div className="card-body">
+                                <h2 class="card-title mb-0">Followers: 33</h2>
+                                <hr/>
                             </div>
                         </div>
                     </Col>
