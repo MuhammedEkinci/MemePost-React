@@ -45,7 +45,7 @@ export default function UserProfile(){
                                     height="128"
                                 />
                                 <h2 class="card-title mb-0">{userid}</h2>
-                                <Button id="follow-btn">Follow</Button>
+                                <Button className="follow-btn" variant="outline-primary" size="sm">Follow</Button>
                             </div>
                         </div>
                         <div className="card mb-3" id="profile-card">
