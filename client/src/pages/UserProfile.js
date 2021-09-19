@@ -12,6 +12,7 @@ import API from "../utils/API";
 
 //profile temp
 import ProfileImage from "../images/profileImg.png";
+import FollowButton from "../components/FollowButton";
 
 
 export default function UserProfile(){
@@ -45,7 +46,7 @@ export default function UserProfile(){
                                     height="128"
                                 />
                                 <h2 class="card-title mb-0">{userid}</h2>
-                                <Button className="follow-btn" variant="outline-primary" size="sm">Follow</Button>
+                                <FollowButton followUserId={userid}/>
                             </div>
                         </div>
                         <div className="card mb-3" id="profile-card">
