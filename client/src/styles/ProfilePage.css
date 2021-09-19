@@ -136,6 +136,10 @@ body{
     margin-bottom: .75rem
 }
 
+.follow-btn {
+    margin-top: 20px !important;
+}
+
 @media (min-width:576px) {
     .card-deck {
         -ms-flex-flow: row wrap;
