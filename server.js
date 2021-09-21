@@ -214,30 +214,33 @@ app.delete("/api/savedMeme/:currentUser/:memeId", (req, res) => {
 // follow users route that adds user to followers and following database
 app.post("/api/follow", (req, res) => {
   //update followers array 
-  FriendsList.findOneAndUpdate(
-    {user: req.body.followingUsername}, 
-    {$push: {followers: req.body.user}
-  }).then(user => {
-    if(!user){
-      const newUserToFollow = new FriendsList({
-        user: req.body.followingUsername,
-        following: [
-          {
-            followingUsername: req.body.followingUsername,
 
-          }
-        ],
-        followers: [
-          {
-            followerUsername: req.body.followingUsername
-          }
-        ]
-      });
-      newUserToFollow.save()
-      .then(x =>res.json(x))
-      .catch(err => console.log(err));
-    }
-  })
+  console.log(req.body.followingUser);
+  console.log(req.body.currentUser);
+  // FriendsList.findOneAndUpdate(
+  //   {user: req.body.followingUsername}, 
+  //   {$push: {followers: req.body.user}
+  // }).then(user => {
+  //   if(!user){
+  //     const newUserToFollow = new FriendsList({
+  //       user: req.body.followingUsername,
+  //       following: [
+  //         {
+  //           followingUsername: req.body.followingUsername,
+
+  //         }
+  //       ],
+  //       followers: [
+  //         {
+  //           followerUsername: req.body.followingUsername
+  //         }
+  //       ]
+  //     });
+  //     newUserToFollow.save()
+  //     .then(x =>res.json(x))
+  //     .catch(err => console.log(err));
+  //   }
+  // })
 });
 
 // unfollow users route that removes users from database

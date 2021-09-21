@@ -61,9 +61,8 @@ export default {
         return axios.get("/api/get_comment/" + memeId);
     },
     followMemer: function(followData){
-        console.log(followData);
         return axios({
-            method: "put",
+            method: "post",
             url: "/api/follow",
             data: followData
         });
