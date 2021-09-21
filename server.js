@@ -217,30 +217,30 @@ app.post("/api/follow", (req, res) => {
 
   console.log(req.body.followingUser);
   console.log(req.body.currentUser);
-  // FriendsList.findOneAndUpdate(
-  //   {user: req.body.followingUsername}, 
-  //   {$push: {followers: req.body.user}
-  // }).then(user => {
-  //   if(!user){
-  //     const newUserToFollow = new FriendsList({
-  //       user: req.body.followingUsername,
-  //       following: [
-  //         {
-  //           followingUsername: req.body.followingUsername,
+  FriendsList.findOneAndUpdate(
+    {user: req.body.followingUser}, 
+    {$push: {followers: req.body.currentUser}
+  }).then(user => {
+    if(!user){
+      const newUserToFollow = new FriendsList({
+        user: req.body.followingUser,
+        following: [
+          {
+            followingUsername: req.body.followingUser,
 
-  //         }
-  //       ],
-  //       followers: [
-  //         {
-  //           followerUsername: req.body.followingUsername
-  //         }
-  //       ]
-  //     });
-  //     newUserToFollow.save()
-  //     .then(x =>res.json(x))
-  //     .catch(err => console.log(err));
-  //   }
-  // })
+          }
+        ],
+        followers: [
+          {
+            followerUsername: req.body.followingUsername
+          }
+        ]
+      });
+      newUserToFollow.save()
+      .then(x =>res.json(x))
+      .catch(err => console.log(err));
+    }
+  })
 });
 
 // unfollow users route that removes users from database

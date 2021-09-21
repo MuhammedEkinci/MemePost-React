@@ -11,7 +11,7 @@ const FriendsSchema = new Schema({
         {
             followingUsername: {
                 type: String,
-                required: true
+                required: false
             }
         }
     ],
@@ -19,7 +19,7 @@ const FriendsSchema = new Schema({
         {
             followerUsername: {
                 type: String,
-                required: true
+                required: false
             }
         }
     ]
